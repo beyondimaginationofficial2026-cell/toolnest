@@ -4,179 +4,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ToolNest offers free online tools for word counting, calculations, image compression and PDF merging.">
 <title>ToolNest - Free Online Tools</title>
-<meta name="description" content="Free online tools for everyone. Word counter, percentage calculator, age calculator and image compressor.">
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fc;color:#172033}
-header{background:#fff;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #0000000b}
-.logo{font-size:25px;font-weight:bold;color:#3867e8}
-nav a{color:#34415b;text-decoration:none;margin-left:15px;font-size:14px}
-.hero{text-align:center;padding:55px 18px 35px;background:linear-gradient(135deg,#e9efff,#f7f8ff)}
-.hero h1{font-size:34px;margin:0 0 14px}
-.hero p{color:#64708a;line-height:1.6}
-.search{width:90%;max-width:450px;padding:14px;border:1px solid #dce2ef;border-radius:12px;margin-top:15px;font-size:15px}
-.container{max-width:1000px;margin:35px auto;padding:0 16px}
-h2{font-size:23px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:white;padding:23px;border-radius:15px;box-shadow:0 4px 18px #192c5010}
-.card h3{margin:12px 0}
-.card p{color:#69758b;font-size:14px;line-height:1.5}
-.icon{font-size:30px}
-button{background:#3867e8;color:white;border:0;border-radius:9px;padding:12px 17px;font-weight:bold;cursor:pointer}
-button:hover{background:#244fc7}
-.tool{margin-top:25px;background:white;padding:22px;border-radius:15px;box-shadow:0 4px 18px #192c5010}
-.tool input,.tool textarea{width:100%;padding:13px;border:1px solid #dce2ef;border-radius:9px;margin:10px 0;font-size:15px}
-.tool textarea{min-height:120px;resize:vertical}
-.result{font-weight:bold;color:#3867e8;margin-top:12px}
-footer{text-align:center;padding:30px;color:#778197;font-size:13px}
-.hidden{display:none}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+header{background:#172554;color:white;padding:25px 16px;text-align:center}
+header h1{margin:0;font-size:32px}
+header p{margin:9px 0 0;color:#dbeafe}
+nav{background:white;padding:13px;text-align:center;border-bottom:1px solid #e5e7eb}
+nav a{color:#1d4ed8;text-decoration:none;margin:0 10px;font-size:14px;font-weight:bold}
+.container{max-width:1000px;margin:25px auto;padding:0 15px}
+.intro{text-align:center;margin-bottom:25px}
+.intro h2{font-size:25px;margin-bottom:8px}
+.intro p{color:#64748b}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.card{background:white;border:1px solid #e5e7eb;border-radius:13px;padding:20px;box-shadow:0 3px 12px #1725540a}
+.card h3{margin-top:0;color:#1e40af}
+textarea,input{width:100%;padding:12px;margin:8px 0;border:1px solid #cbd5e1;border-radius:8px;font-size:15px}
+button{background:#2563eb;color:white;border:0;padding:11px 16px;border-radius:8px;font-size:15px;cursor:pointer;margin-top:7px}
+button:hover{background:#1d4ed8}
+.result{margin-top:12px;font-weight:bold;color:#166534;overflow-wrap:anywhere}
+.small{font-size:13px;color:#64748b}
+footer{text-align:center;padding:25px;margin-top:30px;background:#172554;color:white}
+footer a{color:#bfdbfe}
 </style>
 </head>
 <body>
+
 <header>
-<div class="logo">🌐 ToolNest</div>
-<nav><a href="#tools">Tools</a><a href="#about">About</a></nav>
+<h1>ToolNest</h1>
+<p>Free Online Tools for Everyday Work</p>
 </header>
 
-<section class="hero">
-<h1>Free Online Tools for Everyone</h1>
-<p>Simple, fast and useful tools to make your daily work easier.</p>
-<input class="search" id="search" placeholder="Search for a tool..." oninput="searchTools()">
+<nav>
+<a href="#tools">All Tools</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<main class="container">
+<section class="intro">
+<h2>Simple, Free Online Tools</h2>
+<p>Use helpful tools for text, calculations, images and PDF files.</p>
 </section>
 
-<main class="container" id="tools">
-<h2>Explore Free Tools</h2>
-<div class="grid" id="grid">
-<div class="card" data-name="word counter">
-<div class="icon">📝</div>
-<h3>Word Counter</h3>
-<p>Count words, characters and sentences instantly.</p>
-<button onclick="showTool('word')">Use Tool</button>
-</div>
-<div class="card" data-name="percentage calculator">
-<div class="icon">🧮</div>
-<h3>Percentage Calculator</h3>
-<p>Calculate percentages quickly and easily.</p>
-<button onclick="showTool('percent')">Use Tool</button>
-</div>
-<div class="card" data-name="age calculator">
-<div class="icon">🎂</div>
-<h3>Age Calculator</h3>
-<p>Find your exact age in years, months and days.</p>
-<button onclick="showTool('age')">Use Tool</button>
-</div>
-<div class="card" data-name="image compressor">
-<div class="icon">🖼️</div>
-<h3>Image Compressor</h3>
-<p>Reduce image file size in your browser.</p>
-<button onclick="showTool('image')">Use Tool</button>
-</div>
+<section class="tools" id="tools">
+
+<div class="card">
+<h3>📝 Word Counter</h3>
+<textarea id="wordText" rows="4" placeholder="Type or paste your text here..."></textarea>
+<button onclick="countWords()">Count Words</button>
+<div class="result" id="wordResult"></div>
 </div>
 
-<section class="tool hidden" id="word">
-<h2>Word Counter</h2>
-<textarea id="words" placeholder="Type or paste your text here..." oninput="countWords()"></textarea>
-<p id="wordResult" class="result">Words: 0 | Characters: 0</p>
-</section>
+<div class="card">
+<h3>🧮 Percentage Calculator</h3>
+<input type="number" id="percentValue" placeholder="Enter number">
+<input type="number" id="percentRate" placeholder="Enter percentage">
+<button onclick="calculatePercentage()">Calculate</button>
+<div class="result" id="percentResult"></div>
+</div>
 
-<section class="tool hidden" id="percent">
-<h2>Percentage Calculator</h2>
-<p>What is the percentage of a number?</p>
-<input type="number" id="p1" placeholder="Enter percentage">
-<input type="number" id="p2" placeholder="Enter number">
-<button onclick="calcPercent()">Calculate</button>
-<p id="percentResult" class="result"></p>
-</section>
+<div class="card">
+<h3>🎂 Age Calculator</h3>
+<label for="birthDate">Select your date of birth:</label>
+<input type="date" id="birthDate">
+<button onclick="calculateAge()">Calculate Age</button>
+<div class="result" id="ageResult"></div>
+</div>
 
-<section class="tool hidden" id="age">
-<h2>Age Calculator</h2>
-<label>Select your date of birth</label>
-<input type="date" id="dob">
-<button onclick="calcAge()">Calculate Age</button>
-<p id="ageResult" class="result"></p>
-</section>
-
-<section class="tool hidden" id="image">
-<h2>Image Compressor</h2>
-<p>Select an image to reduce its size.</p>
+<div class="card">
+<h3>🖼️ Image Compressor</h3>
+<p class="small">Choose an image and compress it into a smaller JPG file.</p>
 <input type="file" id="imageFile" accept="image/*">
+<label for="imageQuality">Image quality (lower means smaller file):</label>
+<input type="range" id="imageQuality" min="30" max="90" value="70">
 <button onclick="compressImage()">Compress Image</button>
-<p id="imageResult" class="result"></p>
+<div class="result" id="imageResult"></div>
+</div>
+
+<div class="card">
+<h3>📄 PDF Merger</h3>
+<p class="small">Select two or more PDF files to combine them into one.</p>
+<input type="file" id="pdfFiles" accept="application/pdf,.pdf" multiple>
+<button onclick="mergePDFs()">Merge PDF Files</button>
+<div class="result" id="pdfResult"></div>
+</div>
+
 </section>
 
-<section id="about" class="tool">
-<h2>About ToolNest</h2>
-<p>ToolNest provides simple and useful free online tools to help people save time and work smarter. More tools are coming soon!</p>
+<section class="card" id="about" style="margin-top:22px">
+<h3>About ToolNest</h3>
+<p>ToolNest provides simple online tools to help with everyday digital tasks. Our goal is to make useful tools easy to access and simple to use.</p>
+</section>
+
+<section class="card" id="contact" style="margin-top:18px">
+<h3>Contact</h3>
+<p>For questions or feedback, please contact the website owner.</p>
 </section>
 </main>
 
-<footer>© 2026 ToolNest. All rights reserved.</footer>
+<footer>
+<p>© <span id="year"></span> ToolNest. All rights reserved.</p>
+<p>Free online tools made simple.</p>
+</footer>
 
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 <script>
-function showTool(id){
-document.querySelectorAll('.tool').forEach(x=>x.classList.add('hidden'));
-document.getElementById(id).classList.remove('hidden');
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-function searchTools(){
-let q=document.getElementById('search').value.toLowerCase();
-document.querySelectorAll('.card').forEach(c=>{
-c.style.display=c.dataset.name.includes(q)?'block':'none';
-});
-}
+document.getElementById("year").textContent = new Date().getFullYear();
+
 function countWords(){
-let t=document.getElementById('words').value.trim();
-let w=t?t.split(/\s+/).length:0;
-let c=document.getElementById('words').value.length;
-let s=t?t.split(/[.!?]+/).filter(x=>x.trim()).length:0;
-document.getElementById('wordResult').textContent=
-'Words: '+w+' | Characters: '+c+' | Sentences: '+s;
+ const text=document.getElementById("wordText").value.trim();
+ const words=text ? text.split(/\s+/).length : 0;
+ const characters=document.getElementById("wordText").value.length;
+ document.getElementById("wordResult").textContent=
+ "Words: "+words+" | Characters: "+characters;
 }
-function calcPercent(){
-let a=parseFloat(document.getElementById('p1').value);
-let b=parseFloat(document.getElementById('p2').value);
-document.getElementById('percentResult').textContent=
-Number.isFinite(a)&&Number.isFinite(b)?a+'% of '+b+' = '+(a*b/100):'Please enter both numbers.';
+
+function calculatePercentage(){
+ const number=parseFloat(document.getElementById("percentValue").value);
+ const rate=parseFloat(document.getElementById("percentRate").value);
+ if(!Number.isFinite(number)||!Number.isFinite(rate)){
+  document.getElementById("percentResult").textContent="Please enter both numbers.";
+  return;
+ }
+ document.getElementById("percentResult").textContent=
+ rate+"% of "+number+" = "+(number*rate/100);
 }
-function calcAge(){
-let v=document.getElementById('dob').value;
-let r=document.getElementById('ageResult');
-if(!v){r.textContent='Please select your birth date.';return;}
-let d=new Date(v+'T00:00:00');
-let now=new Date();
-if(d>now){r.textContent='Birth date cannot be in the future.';return;}
-let y=now.getFullYear()-d.getFullYear();
-let m=now.getMonth()-d.getMonth();
-let days=now.getDate()-d.getDate();
-if(days<0){m--;days+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
-if(m<0){y--;m+=12;}
-r.textContent=y+' years, '+m+' months, '+days+' days';
+
+function calculateAge(){
+ const value=document.getElementById("birthDate").value;
+ const result=document.getElementById("ageResult");
+ if(!value){result.textContent="Please select your birth date.";return;}
+ const birth=new Date(value+"T00:00:00");
+ const today=new Date();
+ if(birth>today){result.textContent="Birth date cannot be in the future.";return;}
+ let years=today.getFullYear()-birth.getFullYear();
+ let months=today.getMonth()-birth.getMonth();
+ let days=today.getDate()-birth.getDate();
+ if(days<0){
+  months--;
+  days+=new Date(today.getFullYear(),today.getMonth(),0).getDate();
+ }
+ if(months<0){years--;months+=12;}
+ result.textContent=years+" years, "+months+" months, "+days+" days";
 }
-function compressImage(){
-let file=document.getElementById('imageFile').files[0];
-let r=document.getElementById('imageResult');
-if(!file){r.textContent='Please select an image.';return;}
-let img=new Image();
-let url=URL.createObjectURL(file);
-img.onload=function(){
-let canvas=document.createElement('canvas');
-let scale=Math.min(1,1600/img.width,1600/img.height);
-canvas.width=img.width*scale;
-canvas.height=img.height*scale;
-canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
-canvas.toBlob(blob=>{
-if(!blob){r.textContent='Compression failed.';URL.revokeObjectURL(url);return;}
-let link=document.createElement('a');
-link.href=URL.createObjectURL(blob);
-link.download='compressed-image.jpg';
-link.click();
-r.textContent='Original: '+(file.size/1024).toFixed(1)+' KB | Compressed: '+(blob.size/1024).toFixed(1)+' KB. Download started!';
-URL.revokeObjectURL(url);
-},'image/jpeg',0.7);
-};
-img.onerror=function(){r.textContent='Could not load this image.';URL.revokeObjectURL(url);};
-img.src=url;
+
+async function compressImage(){
+ const file=document.getElementById("imageFile").files[0];
+ const result=document.getElementById("imageResult");
+ if(!file){result.textContent="Please choose an image first.";return;}
+ if(!file.type.startsWith("image/")){result.textContent="Please choose a valid image.";return;}
+ result.textContent="Compressing...";
+ try{
+  const image=new Image();
+  const url=URL.createObjectURL(file);
+  image.onload=function(){
+   const canvas=document.createElement("canvas");
+   const maxSide=2000;
+   const scale=Math.min(1,maxSide/Math.max(image.width,image.height));
+   canvas.width=Math.round(image.width*scale);
+   canvas.height=Math.round(image.height*scale);
+   const ctx=canvas.getContext("2d");
+   ctx.drawImage(image,0,0,canvas.width,canvas.height);
+   canvas.toBlob(function(blob){
+    URL.revokeObjectURL(url);
+    if(!blob){result.textContent="Compression failed. Try another image.";return;}
+    const downloadUrl=URL.createObjectURL(blob);
+    const link=document.createElement("a");
+    link.href=downloadUrl;
+    link.download="toolnest-compressed.jpg";
+    link.textContent="Download compressed image";
+    result.textContent="Original: "+(file.size/1024).toFixed(1)+" KB | Compressed: "+(blob.size/1024).toFixed(1)+" KB ";
+    result.appendChild(link);
+   },"image/jpeg",Number(document.getElementById("imageQuality").value)/100);
+  };
+  image.onerror=function(){URL.revokeObjectURL(url);result.textContent="Could not read this image.";};
+  image.src=url;
+ }catch(error){result.textContent="Something went wrong. Please try again.";}
+}
+
+async function mergePDFs(){
+ const files=Array.from(document.getElementById("pdfFiles").files);
+ const result=document.getElementById("pdfResult");
+ if(files.length<2){result.textContent="Please select at least two PDF files.";return;}
+ if(!window.PDFLib){result.textContent="PDF tool could not load. Check your internet connection and try again.";return;}
+ result.textContent="Merging PDF files...";
+ try{
+  const merged=await PDFLib.PDFDocument.create();
+  for(const file of files){
+   const bytes=await file.arrayBuffer();
+   const pdf=await PDFLib.PDFDocument.load(bytes);
+   const pages=await merged.copyPages(pdf,pdf.getPageIndices());
+   pages.forEach(page=>merged.addPage(page));
+  }
+  const output=await merged.save();
+  const blob=new Blob([output],{type:"application/pdf"});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement("a");
+  link.href=url;
+  link.download="toolnest-merged.pdf";
+  link.textContent="Download merged PDF";
+  result.textContent="PDF files merged successfully. ";
+  result.appendChild(link);
+ }catch(error){
+  result.textContent="Could not merge these PDFs. Please check that the files are valid and not password-protected.";
+ }
 }
 </script>
 </body>
