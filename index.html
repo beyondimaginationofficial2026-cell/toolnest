@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolNest - Free Online Tools</title>
+<meta name="description" content="Free online tools for everyone. Word counter, percentage calculator, age calculator and image compressor.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fc;color:#172033}
+header{background:#fff;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #0000000b}
+.logo{font-size:25px;font-weight:bold;color:#3867e8}
+nav a{color:#34415b;text-decoration:none;margin-left:15px;font-size:14px}
+.hero{text-align:center;padding:55px 18px 35px;background:linear-gradient(135deg,#e9efff,#f7f8ff)}
+.hero h1{font-size:34px;margin:0 0 14px}
+.hero p{color:#64708a;line-height:1.6}
+.search{width:90%;max-width:450px;padding:14px;border:1px solid #dce2ef;border-radius:12px;margin-top:15px;font-size:15px}
+.container{max-width:1000px;margin:35px auto;padding:0 16px}
+h2{font-size:23px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:white;padding:23px;border-radius:15px;box-shadow:0 4px 18px #192c5010}
+.card h3{margin:12px 0}
+.card p{color:#69758b;font-size:14px;line-height:1.5}
+.icon{font-size:30px}
+button{background:#3867e8;color:white;border:0;border-radius:9px;padding:12px 17px;font-weight:bold;cursor:pointer}
+button:hover{background:#244fc7}
+.tool{margin-top:25px;background:white;padding:22px;border-radius:15px;box-shadow:0 4px 18px #192c5010}
+.tool input,.tool textarea{width:100%;padding:13px;border:1px solid #dce2ef;border-radius:9px;margin:10px 0;font-size:15px}
+.tool textarea{min-height:120px;resize:vertical}
+.result{font-weight:bold;color:#3867e8;margin-top:12px}
+footer{text-align:center;padding:30px;color:#778197;font-size:13px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🌐 ToolNest</div>
+<nav><a href="#tools">Tools</a><a href="#about">About</a></nav>
+</header>
+
+<section class="hero">
+<h1>Free Online Tools for Everyone</h1>
+<p>Simple, fast and useful tools to make your daily work easier.</p>
+<input class="search" id="search" placeholder="Search for a tool..." oninput="searchTools()">
+</section>
+
+<main class="container" id="tools">
+<h2>Explore Free Tools</h2>
+<div class="grid" id="grid">
+<div class="card" data-name="word counter">
+<div class="icon">📝</div>
+<h3>Word Counter</h3>
+<p>Count words, characters and sentences instantly.</p>
+<button onclick="showTool('word')">Use Tool</button>
+</div>
+<div class="card" data-name="percentage calculator">
+<div class="icon">🧮</div>
+<h3>Percentage Calculator</h3>
+<p>Calculate percentages quickly and easily.</p>
+<button onclick="showTool('percent')">Use Tool</button>
+</div>
+<div class="card" data-name="age calculator">
+<div class="icon">🎂</div>
+<h3>Age Calculator</h3>
+<p>Find your exact age in years, months and days.</p>
+<button onclick="showTool('age')">Use Tool</button>
+</div>
+<div class="card" data-name="image compressor">
+<div class="icon">🖼️</div>
+<h3>Image Compressor</h3>
+<p>Reduce image file size in your browser.</p>
+<button onclick="showTool('image')">Use Tool</button>
+</div>
+</div>
+
+<section class="tool hidden" id="word">
+<h2>Word Counter</h2>
+<textarea id="words" placeholder="Type or paste your text here..." oninput="countWords()"></textarea>
+<p id="wordResult" class="result">Words: 0 | Characters: 0</p>
+</section>
+
+<section class="tool hidden" id="percent">
+<h2>Percentage Calculator</h2>
+<p>What is the percentage of a number?</p>
+<input type="number" id="p1" placeholder="Enter percentage">
+<input type="number" id="p2" placeholder="Enter number">
+<button onclick="calcPercent()">Calculate</button>
+<p id="percentResult" class="result"></p>
+</section>
+
+<section class="tool hidden" id="age">
+<h2>Age Calculator</h2>
+<label>Select your date of birth</label>
+<input type="date" id="dob">
+<button onclick="calcAge()">Calculate Age</button>
+<p id="ageResult" class="result"></p>
+</section>
+
+<section class="tool hidden" id="image">
+<h2>Image Compressor</h2>
+<p>Select an image to reduce its size.</p>
+<input type="file" id="imageFile" accept="image/*">
+<button onclick="compressImage()">Compress Image</button>
+<p id="imageResult" class="result"></p>
+</section>
+
+<section id="about" class="tool">
+<h2>About ToolNest</h2>
+<p>ToolNest provides simple and useful free online tools to help people save time and work smarter. More tools are coming soon!</p>
+</section>
+</main>
+
+<footer>© 2026 ToolNest. All rights reserved.</footer>
+
+<script>
+function showTool(id){
+document.querySelectorAll('.tool').forEach(x=>x.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+function searchTools(){
+let q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.card').forEach(c=>{
+c.style.display=c.dataset.name.includes(q)?'block':'none';
+});
+}
+function countWords(){
+let t=document.getElementById('words').value.trim();
+let w=t?t.split(/\s+/).length:0;
+let c=document.getElementById('words').value.length;
+let s=t?t.split(/[.!?]+/).filter(x=>x.trim()).length:0;
+document.getElementById('wordResult').textContent=
+'Words: '+w+' | Characters: '+c+' | Sentences: '+s;
+}
+function calcPercent(){
+let a=parseFloat(document.getElementById('p1').value);
+let b=parseFloat(document.getElementById('p2').value);
+document.getElementById('percentResult').textContent=
+Number.isFinite(a)&&Number.isFinite(b)?a+'% of '+b+' = '+(a*b/100):'Please enter both numbers.';
+}
+function calcAge(){
+let v=document.getElementById('dob').value;
+let r=document.getElementById('ageResult');
+if(!v){r.textContent='Please select your birth date.';return;}
+let d=new Date(v+'T00:00:00');
+let now=new Date();
+if(d>now){r.textContent='Birth date cannot be in the future.';return;}
+let y=now.getFullYear()-d.getFullYear();
+let m=now.getMonth()-d.getMonth();
+let days=now.getDate()-d.getDate();
+if(days<0){m--;days+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
+if(m<0){y--;m+=12;}
+r.textContent=y+' years, '+m+' months, '+days+' days';
+}
+function compressImage(){
+let file=document.getElementById('imageFile').files[0];
+let r=document.getElementById('imageResult');
+if(!file){r.textContent='Please select an image.';return;}
+let img=new Image();
+let url=URL.createObjectURL(file);
+img.onload=function(){
+let canvas=document.createElement('canvas');
+let scale=Math.min(1,1600/img.width,1600/img.height);
+canvas.width=img.width*scale;
+canvas.height=img.height*scale;
+canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+canvas.toBlob(blob=>{
+if(!blob){r.textContent='Compression failed.';URL.revokeObjectURL(url);return;}
+let link=document.createElement('a');
+link.href=URL.createObjectURL(blob);
+link.download='compressed-image.jpg';
+link.click();
+r.textContent='Original: '+(file.size/1024).toFixed(1)+' KB | Compressed: '+(blob.size/1024).toFixed(1)+' KB. Download started!';
+URL.revokeObjectURL(url);
+},'image/jpeg',0.7);
+};
+img.onerror=function(){r.textContent='Could not load this image.';URL.revokeObjectURL(url);};
+img.src=url;
+}
+</script>
+</body>
+</html>
